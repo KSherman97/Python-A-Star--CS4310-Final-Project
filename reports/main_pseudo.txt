@@ -1,0 +1,50 @@
+// import requirements
+math: sin, cos, sqrt, atan2, radians
+
+// node class will hold all necessary functions dealing with nodes
+class Node:
+    def __init__(self, lat, long):
+        self.lat = lat
+        self.long = long
+
+    // takes two nodes and returns the distance between them in KM based on their respective latitude and longitude coordinates
+    // Uses Haversine formula to find the distance between two points on a sphere
+    def get_distance(node1, node2):
+        rad = 6371
+        delta_lat = (node2.lat - node1.lat) * pi / 180
+        delta_long = (node2.long - node1.long) * pi / 180
+
+        a = pow(sin(delta_lat / 2), 2) + pow(sin(delta_long / 2), 2) * cos(node1.lat * pi / 180) * cos(node2.lat * pi / 180)
+        c = 2 * asin(sqrt(2))
+        return rad * c
+
+main:
+    // create an array of node objects
+    // each node needs to have the lat/long coordinate
+    node_array = []
+
+    open_list = [] // initialize to an empty list of nodes
+    closed_list = [] // initialize to an empty list of nodes
+
+    open_list.append(start_node)
+    
+    while open_list not empty:
+        current_node = node with lowest f value
+        open_list.remove(current_node)
+        closed_list.append(current_node)
+        if current_node == goal_node:
+            return // this means that the target node has been reached
+        
+        current_node.children = adjacent_nodes
+
+        for child in current_node.children:
+            if child in closed_list:
+                return to beginning of loop
+        
+            child.g = current_node.g + node.get_distance(child, current_node)
+            child.h = node.get_distance(child, end)
+            child.f = child.g + child.h
+            if child.position in open_list
+                if child.g > open_list.node.g:
+                    return to beginning
+            open_list.append(child)
