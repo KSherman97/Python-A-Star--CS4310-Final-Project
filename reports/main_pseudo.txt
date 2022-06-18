@@ -2,7 +2,7 @@ A* Shortest Path Problem for determining the optimal path between two points on 
 Kyle sherman, Tanveer Ahmed
 
 Our program will be a console based application.
-We will use hard coded coodinates, however it would not be significantly more work to implement the ability for a user to enter their 
+We will use hard coded coodinates, however it would not be significantly more work to implement the ability for a user to enter their
 own coordinate points / node sets.
 
 As of now, the only package that is depended upon is the math package for basic geometric and math functions such as PI, sin, cos, etc.
