@@ -1,3 +1,29 @@
+A* Shortest Path Problem for determining the optimal path between two points on Earth's surface
+Kyle sherman, Tanveer Ahmed
+
+Our program will be a console based application.
+We will use hard coded coodinates, however it would not be significantly more work to implement the ability for a user to enter their 
+own coordinate points / node sets.
+
+As of now, the only package that is depended upon is the math package for basic geometric and math functions such as PI, sin, cos, etc.
+
+The program will have two files: main.py and node.py
+- main.py will contain all of the necessary driver code as well as the actual algorithm itself
+- node.py will contain the node class as well as any required utility functions; for now, the only utility function is the get_distance function to return the km distance between two points
+
+- as of now, the node class will contain only the latitude and longitude coordinates for a given node
+- the nodes will be stored in an array
+
+- the only question we still need to decide is whether the middle nodes (not start or end nodes) should be pre-determined or if they should be generative based on the algorithm.
+  At this time, for the sake of simplicity, we are likely to provide a hard coded set of coordinate.
+
+Primary tools used:
+- VSCode
+- Github
+- PyTest
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
 // import requirements
 math: sin, cos, sqrt, atan2, radians
 
@@ -22,7 +48,7 @@ class Node:
 
         a = pow(sin(delta_lat / 2), 2) + pow(sin(delta_long / 2), 2) * cos(lat1) * cos(lat2)
         c = 2 * asin(sqrt(2))
-        
+
         return radius * c
 
 main:
@@ -30,11 +56,17 @@ main:
     // each node needs to have the lat/long coordinate
     node_array = []
 
+    // the open list will hold nodes yet to be visided (thus they are open)
+    // the closed list will hold nodes that have already been visited (thus they are closed)
     open_list = [] // initialize to an empty list of nodes
     closed_list = [] // initialize to an empty list of nodes
 
     open_list.append(start_node)
     
+    // the primary algorithm loop continues until all nodes have been visited or the current node is the target node
+    // the algorithm using a huristic and cost basis value for each node, the summation of which will determine which path is optimal
+    // Generally with the A* algorithm, the heuristic value will be calculated using a specific formula, but in our case it will likely be 
+    // based on the distance between nodes in K.M.
     while open_list not empty:
         current_node = node with lowest f value
         open_list.remove(current_node)
