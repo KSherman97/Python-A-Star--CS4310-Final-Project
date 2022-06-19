@@ -1,0 +1,36 @@
+We need to move through a grid/maze which is a list of lists that contains 1s and 0s. 
+•	1 determines the pathway is blocked
+•	0  the cell is not blocked
+For example( a list of lists given in python): 
+    maze = [[0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0],
+            [0, 1, 0, 1, 0, 0],
+            [0, 1, 0, 0, 1, 0],
+            [0, 0, 0, 0, 1, 0]]
+    start = [0, 0] # starting position
+    end = [4,5] # ending position
+    cost = 1 # cost per movement
+
+    path = search(maze,cost, start, end)
+    print(path)
+
+Parameters to run will be:
+	• Start – determines the starting position
+	• End – determines the position the movement will finish.
+	• Cost – which will give the number of movements required to reach a particular destination. The one with highest will be end position.
+	• This parameters will passed to a recursion function search() where all the movements and logic will occur. 
+we have a starting position and end path. The search function will try to find the shortest path from start position. 
+
+If we analyze the movement of pathway of the shortest movement:
+Resulted matrix given following:
+  0 -1 -1 -1 -1 -1
+  1  2  3  4  5 -1
+ -1 -1 -1 -1  6  7
+ -1 -1 -1 -1 -1  8
+ -1 -1 -1 -1 -1  9
+	• It required 9 movements to reach the destination. 
+		o At first it goes down by 1
+		o Then it goes right by 4
+		o Then it goes down by 1
+		o Then it goes right by 1
+		o At last it goes down by 2
