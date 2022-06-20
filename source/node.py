@@ -1,17 +1,35 @@
 from math import radians, sin, cos, asin, sqrt
 
+# Node class attributes
+# name - City name
+# lat / long - coordinates for the city
+# parent - list of parent nodes to the city
+
 class node:
-    def __init__(self, lat, long, parent=None, start=False, goal=False):
+    # node class constructor
+    def __init__(self, name:str, parent:str, lat = 0, long = 0):
+        self.name = name
         self.lat = lat
         self.long = long
 
         self.parent = parent
-        self.start = start
-        self.goal = goal
 
-        self.g = 0
         self.h = 0
+        self.g = 0
         self.f = 0
+
+    # compare the nodes
+    def __eq__(self, other):
+        return self.name == other.name
+
+    # Sort the nodes
+    # sort on a total cost basis
+    def __lt__(self, other):
+        return self.f < other.f
+
+    # print the node
+    def __repr__(self):
+        return ('({0},{1})'.format(self.name, self.f))
 
     def get_distance(node1, node2):
         radius = 6371 # radius of the Earth
