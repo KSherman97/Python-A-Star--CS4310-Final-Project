@@ -7,7 +7,7 @@ from math import radians, sin, cos, asin, sqrt
 
 class node:
     # node class constructor
-    def __init__(self, name:str, parent:str, lat = 0, long = 0):
+    def __init__(self, name:str, parent:str = None, lat = 0, long = 0):
         self.name = name
         self.lat = lat
         self.long = long
