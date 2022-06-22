@@ -113,13 +113,22 @@ def main():
     heuristics['Zurich'] = 157
     heuristics['Ulm'] = 0
 
+
+    start = 'Ulm'
+    end = 'Frankfurt'
+
     # Run the search algorithm
-    path = astar_search(node_graph, heuristics, 'Frankfurt', 'Ulm')
-    
-    print("complete path:\n ")
+    path = astar_search(node_graph, heuristics, end, start)
+
+    print("complete route from", start, "to", end, "\n ")
     index = 0
     for i in path:
-        print("step ", index, ": ", i)
+        if index == 0:
+            print("Start: ", i)
+        elif index == len(path)-1:
+            print("Dest: ", i)
+        else:
+            print(f"stop {index}:", i)
         index += 1
     print()
 
