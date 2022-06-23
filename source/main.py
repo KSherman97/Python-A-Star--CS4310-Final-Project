@@ -30,9 +30,10 @@ def astar_search(graph, heuristics, start, end):
         if current_node == goal_node:
             path = []
             while current_node != start_node:
-                path.append(current_node.name + ': ' + str(current_node.g))
+                path.append('City: ' + current_node.name + ' - Distance ' + str(round(current_node.g, 2)) + ' km')
                 current_node = current_node.parent
-            path.append(start_node.name + ': ' + str(start_node.g))
+                
+            path.append('City: ' + start_node.name + ' - Distance ' + str(round(start_node.g, 2)) + ' km')
 
             # return the path, but reversed to correct order
             return path[::-1]
@@ -41,6 +42,7 @@ def astar_search(graph, heuristics, start, end):
 
         # loop neighbors
         for key, value in neighbors.items():
+            #print(key, value, current_node)
             neighbor = node(key, current_node) # create a neighbor node
 
             # check if neighbor is in the closed list
@@ -62,75 +64,87 @@ def astar_search(graph, heuristics, start, end):
 
 # The main entry point for this module
 def main():
+
+    # START AND GOAL CITIES
+    start = 'Ulm'
+    end = 'Frankfurt'
+
+    coordinates = {}
+    coordinates['Basel'] = (47.5581077,7.5878261)
+    coordinates['Bern'] = (46.9482713,7.4514512)
+    coordinates['Frankfurt'] = (50.1106444,8.6820917)
+    coordinates['Karlsruhe'] = (49.0068705,8.4034195)
+    coordinates['Linz'] = (48.3059078,14.286198)
+    coordinates['Mannheim'] = (49.4892913, 8.4673098)
+    coordinates['Munchen'] = (48.1371079, 11.5753822)
+    coordinates['Memmingen'] = (47.9867696, 10.181319)
+    coordinates['Nurnberg'] = (49.453872, 11.077298)
+    coordinates['Passau'] = (48.5748229, 13.4609744)
+    coordinates['Rosenheim'] = (47.8539273, 12.127262)
+    coordinates['Stuttgart'] = (48.7784485, 9.1800132)
+    coordinates['Salzburg'] = (7.7981346, 13.0464806)
+    coordinates['Wurzburg'] = (49.79245, 9.932966)
+    coordinates['Zurich'] = (47.376888, 8.541694)
+    coordinates['Ulm'] = (48.399620, 9.996610)
+
+
     # Create a graph
     node_graph = graph()
     # Create graph connections (Actual distance)
-    node_graph.connect('Frankfurt', 'Wurzburg', 111)
-    node_graph.connect('Frankfurt', 'Mannheim', 85)
-    node_graph.connect('Wurzburg', 'Nurnberg', 104)
-    node_graph.connect('Wurzburg', 'Stuttgart', 140)
-    node_graph.connect('Wurzburg', 'Ulm', 183)
-    node_graph.connect('Mannheim', 'Nurnberg', 230)
-    node_graph.connect('Mannheim', 'Karlsruhe', 67)
-    node_graph.connect('Karlsruhe', 'Basel', 191)
-    node_graph.connect('Karlsruhe', 'Stuttgart', 64)
-    node_graph.connect('Nurnberg', 'Ulm', 171)
-    node_graph.connect('Nurnberg', 'Munchen', 170)
-    node_graph.connect('Nurnberg', 'Passau', 220)
-    node_graph.connect('Stuttgart', 'Ulm', 107)
-    node_graph.connect('Basel', 'Bern', 91)
-    node_graph.connect('Basel', 'Zurich', 85)
-    node_graph.connect('Bern', 'Zurich', 120)
-    node_graph.connect('Zurich', 'Memmingen', 184)
-    node_graph.connect('Memmingen', 'Ulm', 55)
-    node_graph.connect('Memmingen', 'Munchen', 115)
-    node_graph.connect('Munchen', 'Ulm', 123)
-    node_graph.connect('Munchen', 'Passau', 189)
-    node_graph.connect('Munchen', 'Rosenheim', 59)
-    node_graph.connect('Rosenheim', 'Salzburg', 81)
-    node_graph.connect('Passau', 'Linz', 102)
-    node_graph.connect('Salzburg', 'Linz', 126)
+    node_graph.connect('Frankfurt', 'Wurzburg', node.get_distance(coordinates['Frankfurt'], coordinates['Wurzburg'])) #
+    node_graph.connect('Frankfurt', 'Mannheim', node.get_distance(coordinates['Frankfurt'], coordinates['Mannheim'])) #
+    node_graph.connect('Wurzburg', 'Nurnberg', node.get_distance(coordinates['Wurzburg'], coordinates['Nurnberg'])) #
+    node_graph.connect('Wurzburg', 'Stuttgart', node.get_distance(coordinates['Wurzburg'], coordinates['Stuttgart'])) #
+    node_graph.connect('Wurzburg', 'Ulm', node.get_distance(coordinates['Wurzburg'], coordinates['Ulm'])) #
+    node_graph.connect('Mannheim', 'Nurnberg', node.get_distance(coordinates['Mannheim'], coordinates['Nurnberg'])) #
+    node_graph.connect('Mannheim', 'Karlsruhe', node.get_distance(coordinates['Mannheim'], coordinates['Karlsruhe'])) #
+    node_graph.connect('Karlsruhe', 'Basel', node.get_distance(coordinates['Karlsruhe'], coordinates['Basel'])) #
+    node_graph.connect('Karlsruhe', 'Stuttgart', node.get_distance(coordinates['Karlsruhe'], coordinates['Stuttgart'])) #
+    node_graph.connect('Nurnberg', 'Ulm', node.get_distance(coordinates['Nurnberg'], coordinates['Ulm'])) #
+    node_graph.connect('Nurnberg', 'Munchen', node.get_distance(coordinates['Nurnberg'], coordinates['Munchen'])) #
+    node_graph.connect('Nurnberg', 'Passau', node.get_distance(coordinates['Nurnberg'], coordinates['Passau'])) #
+    node_graph.connect('Stuttgart', 'Ulm', node.get_distance(coordinates['Stuttgart'], coordinates['Ulm'])) #
+    node_graph.connect('Basel', 'Bern', node.get_distance(coordinates['Basel'], coordinates['Bern'])) #
+    node_graph.connect('Basel', 'Zurich', node.get_distance(coordinates['Basel'], coordinates['Zurich'])) #
+    node_graph.connect('Bern', 'Zurich', node.get_distance(coordinates['Bern'], coordinates['Zurich'])) #
+    node_graph.connect('Zurich', 'Memmingen', node.get_distance(coordinates['Zurich'], coordinates['Memmingen'])) #
+    node_graph.connect('Memmingen', 'Ulm', node.get_distance(coordinates['Memmingen'], coordinates['Ulm'])) #
+    node_graph.connect('Memmingen', 'Munchen', node.get_distance(coordinates['Memmingen'], coordinates['Munchen'])) #
+    node_graph.connect('Munchen', 'Ulm', node.get_distance(coordinates['Munchen'], coordinates['Ulm'])) #
+    node_graph.connect('Munchen', 'Passau', node.get_distance(coordinates['Munchen'], coordinates['Passau'])) #
+    node_graph.connect('Munchen', 'Rosenheim', node.get_distance(coordinates['Munchen'], coordinates['Rosenheim'])) #
+    node_graph.connect('Rosenheim', 'Salzburg', node.get_distance(coordinates['Rosenheim'], coordinates['Salzburg'])) #
+    node_graph.connect('Passau', 'Linz', node.get_distance(coordinates['Passau'], coordinates['Linz'])) #
+    node_graph.connect('Salzburg', 'Linz', node.get_distance(coordinates['Salzburg'], coordinates['Linz'])) #
 
     # Make graph undirected, create symmetric connections
     node_graph.make_undirected()
 
     # Create heuristics (straight-line distance, air-travel distance)
     heuristics = {}
-    heuristics['Basel'] = 204
-    heuristics['Bern'] = 247
-    heuristics['Frankfurt'] = 215
-    heuristics['Karlsruhe'] = 137
-    heuristics['Linz'] = 318
-    heuristics['Mannheim'] = 164
-    heuristics['Munchen'] = 120
-    heuristics['Memmingen'] = 47
-    heuristics['Nurnberg'] = 132
-    heuristics['Passau'] = 257
-    heuristics['Rosenheim'] = 168
-    heuristics['Stuttgart'] = 75
-    heuristics['Salzburg'] = 236
-    heuristics['Wurzburg'] = 153
-    heuristics['Zurich'] = 157
-    heuristics['Ulm'] = 0
-
-
-    start = 'Ulm'
-    end = 'Frankfurt'
+    heuristics['Basel'] = node.get_distance(coordinates[start], coordinates['Basel'])
+    heuristics['Bern'] = node.get_distance(coordinates[start], coordinates['Bern'])
+    heuristics['Frankfurt'] = node.get_distance(coordinates[start], coordinates['Frankfurt'])
+    heuristics['Karlsruhe'] = node.get_distance(coordinates[start], coordinates['Karlsruhe'])
+    heuristics['Linz'] = node.get_distance(coordinates[start], coordinates['Linz'])
+    heuristics['Mannheim'] = node.get_distance(coordinates[start], coordinates['Mannheim'])
+    heuristics['Munchen'] = node.get_distance(coordinates[start], coordinates['Munchen'])
+    heuristics['Memmingen'] = node.get_distance(coordinates[start], coordinates['Memmingen'])
+    heuristics['Nurnberg'] = node.get_distance(coordinates[start], coordinates['Nurnberg'])
+    heuristics['Passau'] = node.get_distance(coordinates[start], coordinates['Passau'])
+    heuristics['Rosenheim'] = node.get_distance(coordinates[start], coordinates['Rosenheim'])
+    heuristics['Stuttgart'] = node.get_distance(coordinates[start], coordinates['Stuttgart'])
+    heuristics['Salzburg'] = node.get_distance(coordinates[start], coordinates['Salzburg'])
+    heuristics['Wurzburg'] = node.get_distance(coordinates[start], coordinates['Wurzburg'])
+    heuristics['Zurich'] = node.get_distance(coordinates[start], coordinates['Zurich'])
+    heuristics['Ulm'] = node.get_distance(coordinates[start], coordinates['Ulm'])
 
     # Run the search algorithm
-    path = astar_search(node_graph, heuristics, end, start)
+    path = astar_search(node_graph, heuristics, start, end)
 
-    print("complete route from", start, "to", end, "\n ")
-    index = 0
+    print("Shortest route from", start, "to", end + ":\n")
     for i in path:
-        if index == 0:
-            print("Start: ", i)
-        elif index == len(path)-1:
-            print("Dest: ", i)
-        else:
-            print(f"stop {index}:", i)
-        index += 1
-    print()
+        print(i)
 
 # Tell python to run main method
 if __name__ == "__main__":

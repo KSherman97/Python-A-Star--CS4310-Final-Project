@@ -4,7 +4,6 @@ from math import radians, sin, cos, asin, sqrt
 # name - City name
 # lat / long - coordinates for the city
 # parent - list of parent nodes to the city
-
 class node:
     # node class constructor
     def __init__(self, name:str, parent:str = None, lat = 0, long = 0):
@@ -19,6 +18,7 @@ class node:
         self.f = 0
 
     # compare the nodes
+    # nodes are compared based on the name
     def __eq__(self, other):
         return self.name == other.name
 
@@ -31,12 +31,13 @@ class node:
     def __repr__(self):
         return ('({0},{1})'.format(self.name, self.f))
 
-    def get_distance(node1, node2):
+    def get_distance(coord1, coord2):
         radius = 6371 # radius of the Earth
-        long1 = radians(node1.long)
-        long2 = radians(node2.long)
-        lat1 = radians(node1.lat)
-        lat2 = radians(node2.lat)
+        lat1 = radians(coord1[0])
+        long1 = radians(coord1[1])
+
+        lat2 = radians(coord2[0])
+        long2 = radians(coord2[1])
 
         delta_lat = lat2-lat1
         delta_long = long2-long1
