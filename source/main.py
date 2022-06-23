@@ -32,7 +32,7 @@ def astar_search(graph, heuristics, start, end):
             while current_node != start_node:
                 path.append('City: ' + current_node.name + ' - Distance ' + str(round(current_node.g, 2)) + ' km')
                 current_node = current_node.parent
-                
+
             path.append('City: ' + start_node.name + ' - Distance ' + str(round(start_node.g, 2)) + ' km')
 
             # return the path, but reversed to correct order
