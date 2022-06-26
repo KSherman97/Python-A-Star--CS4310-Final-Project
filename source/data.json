@@ -1,0 +1,209 @@
+{
+    "cities": [
+        {
+            "name":"Basel",
+            "lat": 47.5581077,
+            "long": 7.5878261
+        }, 
+        {
+            "name":"Bern",
+            "lat": 46.9482713,
+            "long": 7.4514512
+        }, 
+        {
+            "name":"Frankfurt",
+            "lat": 50.1106444,
+            "long": 8.6820917
+        }, 
+        {
+            "name":"Karlsruhe",
+            "lat": 49.0068705,
+            "long": 8.4034195
+        }, 
+        {
+            "name":"Linz",
+            "lat": 48.3059078,
+            "long": 14.286198
+        }, 
+        {
+            "name":"Mannheim",
+            "lat": 49.4892913,
+            "long": 8.4673098
+        }, 
+        {
+            "name":"Munchen",
+            "lat": 48.1371079,
+            "long": 11.5753822
+        }, 
+        {
+            "name":"Memmingen",
+            "lat": 47.9867696,
+            "long": 10.181319
+        }, 
+        {
+            "name":"Nurnberg",
+            "lat": 49.453872,
+            "long": 11.077298
+        }, 
+        {
+            "name":"Passau",
+            "lat": 48.5748229,
+            "long": 13.4609744
+        }, 
+        {
+            "name":"Rosenheim",
+            "lat": 47.8539273,
+            "long": 12.127262
+        }, 
+        {
+            "name":"Stuttgart",
+            "lat": 48.7784485,
+            "long": 9.1800132
+        }, 
+        {
+            "name":"Salzburg",
+            "lat": 7.7981346,
+            "long": 13.0464806
+        }, 
+        {
+            "name":"Wurzburg",
+            "lat": 49.79245,
+            "long": 9.932966
+        }, 
+        {
+            "name":"Zurich",
+            "lat": 47.376888,
+            "long": 8.541694
+        }, 
+        {
+            "name":"Ulm",
+            "lat": 48.399620,
+            "long": 9.996610
+        }
+    ],
+    "connections": [
+        {
+            "from":"Frankfurt",
+            "to": "Wurzburg"
+        },
+        {
+            "from":"Frankfurt",
+            "to": "Mannheim"
+        }
+        ,
+        {
+            "from":"Wurzburg",
+            "to": "Nurnberg"
+        }
+        ,
+        {
+            "from":"Wurzburg",
+            "to": "Stuttgart"
+        }
+        ,
+        {
+            "from":"Wurzburg",
+            "to": "Ulm"
+        }
+        ,
+        {
+            "from":"Mannheim",
+            "to": "Nurnberg"
+        }
+        ,
+        {
+            "from":"Mannheim",
+            "to": "Karlsruhe"
+        }
+        ,
+        {
+            "from":"Karlsruhe",
+            "to": "Basel"
+        }
+        ,
+        {
+            "from":"Karlsruhe",
+            "to": "Stuttgart"
+        }
+        ,
+        {
+            "from":"Nurnberg",
+            "to": "Ulm"
+        }
+        ,
+        {
+            "from":"Nurnberg",
+            "to": "Munchen"
+        }
+        ,
+        {
+            "from":"Nurnberg",
+            "to": "Passau"
+        }
+        ,
+        {
+            "from":"Stuttgart",
+            "to": "Ulm"
+        }
+        ,
+        {
+            "from":"Basel",
+            "to": "Bern"
+        }
+        ,
+        {
+            "from":"Basel",
+            "to": "Zurich"
+        }
+        ,
+        {
+            "from":"Bern",
+            "to": "Zurich"
+        }
+        ,
+        {
+            "from":"Zurich",
+            "to": "Memmingen"
+        }
+        ,
+        {
+            "from":"Memmingen",
+            "to": "Ulm"
+        }
+        ,
+        {
+            "from":"Memmingen",
+            "to": "Munchen"
+        }
+        ,
+        {
+            "from":"Munchen",
+            "to": "Ulm"
+        }
+        ,
+        {
+            "from":"Munchen",
+            "to": "Passau"
+        }
+        ,
+        {
+            "from":"Munchen",
+            "to": "Rosenheim"
+        }
+        ,
+        {
+            "from":"Rosenheim",
+            "to": "Salzburg"
+        }
+        ,
+        {
+            "from":"Passau",
+            "to": "Linz"
+        }
+        ,
+        {
+            "from":"Salzburg",
+            "to": "Linz"
+        }
+    ]
+}

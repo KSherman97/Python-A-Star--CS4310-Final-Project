@@ -27,10 +27,6 @@ class node:
     def __lt__(self, other):
         return self.f < other.f
 
-    # print the node
-    def __repr__(self):
-        return ('({0},{1})'.format(self.name, self.f))
-
     def get_distance(coord1, coord2):
         radius = 6371 # radius of the Earth
         lat1 = radians(coord1[0])

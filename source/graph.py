@@ -7,7 +7,7 @@ class graph:
 
     # create an undirected graph
     # this is done by creating symetric edges
-    def make_undirected(self):
+    def convert_undirected(self):
         for item in list(self.graph_dict.keys()):
             for(b, dist) in self.graph_dict[item].items():
                 self.graph_dict.setdefault(b, {})[item] = dist
