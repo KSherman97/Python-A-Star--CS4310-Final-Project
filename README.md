@@ -8,7 +8,7 @@ The algorithm takes a graph of connect nodes representing x, y coordinates on Ea
 The final result is the shortest path between connecting nodes from a given start to end point.
 
 Example Output
-![Sample Execution](icon.png)
+![Sample Execution](icon.PNG)
 
 How to run:
 1. Clone Repository  
