@@ -1,5 +1,4 @@
-# CS 4310 | Advanced Datastructures and Algorithms Final Project
-## A* Shortest Path Algorithm  
+# A* Shortest Path Algorithm  
 
 Author: Kyle Sherman  
 Language: Python  
