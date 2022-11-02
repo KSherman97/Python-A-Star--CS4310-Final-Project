@@ -7,7 +7,7 @@ This project is an implementation of the A* shortest path algorithm.
 The algorithm takes a graph of connect nodes representing x, y coordinates on Earth.
 The final result is the shortest path between connecting nodes from a given start to end point.
 
-Example Output
+Example Output  
 ![Sample Execution](icon.PNG)
 
 How to run:
