@@ -10,7 +10,7 @@ The final result is the shortest path between connecting nodes from a given star
 How to run:
 1. Clone Repository  
 2. Change to source directory  
-3. run "python main.py"
+3. run "python main.py"  
 3.1 optional parameters "python main.py data.json [start city] [end city]"  
 
 city options:  
