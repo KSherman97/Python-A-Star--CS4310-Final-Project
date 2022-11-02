@@ -7,6 +7,8 @@ import os
 # Code Written by Kyle Sherman
 # Completed 6/25/2022
 
+global total_distance
+
 # check if a neighbor should be added to the opened_nodes list
 def append_open_list(opened_nodes, neighbor):
     for node in opened_nodes:
@@ -15,6 +17,8 @@ def append_open_list(opened_nodes, neighbor):
     return True
 
 def astar_search(graph, heuristics, start, end):
+    global total_distance
+
     # opened and closed node lists (initialize empty)
     opened_nodes = []
     closed_nodes = []
@@ -27,6 +31,7 @@ def astar_search(graph, heuristics, start, end):
     opened_nodes.append(start_node)
 
     while len(opened_nodes) > 0:
+        
         opened_nodes.sort() # sort the opened list to get the node w/ lowest cost first
         current_node = opened_nodes.pop(0) # current node is the node with the lowest cost
         closed_nodes.append(current_node) # add the current node to the closed list
@@ -36,10 +41,12 @@ def astar_search(graph, heuristics, start, end):
         if current_node == goal_node:
             path = []
             while current_node != start_node:
-                path.append('City: ' + current_node.name + ' - Distance ' + str(round(current_node.g, 2)) + ' km')
+                path.append('City: ' + current_node.name + ' - Distance Traveled ' + str(round(current_node.g, 2)) + ' km')
                 current_node = current_node.parent
+                total_distance += round(current_node.g, 2)
 
-            path.append('City: ' + start_node.name + ' - Distance ' + str(round(start_node.g, 2)) + ' km')
+            path.append('City: ' + start_node.name + ' - Distance Traveled ' + str(round(start_node.g, 2)) + ' km')
+            total_distance += round(start_node.g, 2)
 
             # return the path, but reversed to correct order
             path.reverse()
@@ -121,10 +128,12 @@ if __name__ == "__main__":
     start = 'Ulm'
     end = 'Bern'
 
+    total_distance = 0
+
     n = len(sys.argv)
     if n == 1:
         main(file, start, end)
     elif n == 4:
         main(sys.argv[1], sys.argv[2], sys.argv[3])
     else:
-        print("Wrong arguments. Expected main.py [file].json [start city] [end city]")
+        print("Wrong arguments. Expected: python main.py [file].json [start city] [end city]")
