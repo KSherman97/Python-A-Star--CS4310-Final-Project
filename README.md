@@ -1,7 +1,7 @@
 # CS 4310 | Advanced Datastructures and Algorithms Final Project
 ## A* Shortest Path Algorithm  
 
-Author: Kyle Sherman
+Author: Kyle Sherman  
 Language: Python  
 About:  
 This project is an implementation of the A* shortest path algorithm.
